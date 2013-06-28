@@ -297,7 +297,7 @@ install_postfix()
 configure_wp()
 {
   echo -n "Setting up WordPress... "
-  DB_PREFIX=`echo $(</dev/urandom tr -dc A-Za-z0-9 | head -c 7)`
+  DB_PREFIX=`echo $(</dev/urandom tr -dc A-Za-z0-9 | head -c 7)_`
   mkdir -p /home/$sudo_user/$hostname/public/
   wget -q -o ~/install.log -O /home/$sudo_user/$hostname/public/latest.zip http://wordpress.org/latest.zip
   unzip /home/$sudo_user/$hostname/public/latest.zip -d /home/$sudo_user/$hostname/public/ >> ~/install.log
@@ -307,7 +307,7 @@ configure_wp()
   perl -p -i -e "s|database_name_here|$WP_DB|;" /home/$sudo_user/$hostname/public/wp-config-sample.php
   perl -p -i -e "s|username_here|$WP_USER|;" /home/$sudo_user/$hostname/public/wp-config-sample.php
   perl -p -i -e "s|password_here|$WP_USER_PASS|;" /home/$sudo_user/$hostname/public/wp-config-sample.php
-  perl -p -i -e "s|\$table_prefix  = 'wp_';|\$table_prefix  = '$DB_PREFIX_';|;" /home/$sudo_user/$hostname/public/wp-config-sample.php
+  perl -p -i -e "s|\$table_prefix  = 'wp_';|\$table_prefix  = '$DB_PREFIX';|;" /home/$sudo_user/$hostname/public/wp-config-sample.php
   mv /home/$sudo_user/$hostname/public/wp-config-sample.php /home/$sudo_user/$hostname/public/wp-config.php
   wget -O /tmp/wp.keys https://api.wordpress.org/secret-key/1.1/salt/ > /dev/null 2>&1
   sed -i '/#@-/r /tmp/wp.keys' /home/$sudo_user/$hostname/public/wp-config.php
