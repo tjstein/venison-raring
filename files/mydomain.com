@@ -30,11 +30,11 @@ server {
 		log_not_found off;
     }
 
-	location ~ /\. {
-		deny all;
-		access_log off;
-		log_not_found off;
-	}
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
 
     location /nginx_status {
         stub_status on;
