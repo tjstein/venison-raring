@@ -27,7 +27,7 @@ server {
     location = /robots.txt {
         allow all;
         access_log off;
-		log_not_found off;
+        log_not_found off;
     }
 
     location ~ /\. {
