@@ -173,6 +173,8 @@ install_base()
   aptitude -y safe-upgrade > /dev/null 2>&1
   aptitude -y full-upgrade > /dev/null 2>&1
   aptitude -y install dialog curl build-essential python-software-properties git-core htop > /dev/null 2>&1
+  service saslauthd stop > /dev/null 2>&1
+  update-rc.d -f saslauthd remove > /dev/null 2>&1
   echo "done."
 }
 
