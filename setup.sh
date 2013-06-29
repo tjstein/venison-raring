@@ -172,7 +172,7 @@ install_base()
   aptitude update > /dev/null 2>&1
   aptitude -y safe-upgrade > /dev/null 2>&1
   aptitude -y full-upgrade > /dev/null 2>&1
-  aptitude -y install curl build-essential python-software-properties git-core htop > /dev/null 2>&1
+  aptitude -y install dialog curl build-essential python-software-properties git-core htop > /dev/null 2>&1
   echo "done."
 }
 
